@@ -1,0 +1,46 @@
+<div style="height:100px"></div>
+
+<div class="container col-11 m-auto bg-light p-5" style="border-radius: 15px;">
+    <div class="mb-4">
+        <h2>Prise de vues</h2>
+    </div>
+
+    <div class="row justify-content-between align-items-center">
+        <div class="text-center col" *ngIf="!isTaken">
+            <div class="m-auto">
+                <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)" width={{width}}
+                    height={{height}}></webcam>
+            </div>
+
+            <div>
+                <button class="btn btn-secondary takeShot mb-2" id="takeShot" (click)="triggerSnapshot();">
+                    <i class="fa fa-camera" aria-hidden="true"></i>
+                    Prendre une photo
+                </button>
+            </div>
+        </div>
+
+        <div class="text-center col cadre" *ngIf="isTaken">
+            <img [src]="webcamImage.imageAsDataUrl" width="{{width}}" height="{{height}}" align="center" />
+            <div class="justify-content-between align-items-center">
+                <button *ngIf="webcamImage" [disabled]="buttonDisabled" data-toggle="modal" data-target="#exampleModal"
+                    class="btn btn-success valider m-2 " (click)="saveImage()"><i class="fas fa-cloud-upload-alt"></i>
+                    Valider
+                </button>
+                <button class="btn btn-secondary takeShot m-2 " id="takeShot" (click)="changePhoto();">
+                    <i class="fa fa-camera" aria-hidden="true"></i>
+                    Modifier la photo
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--<div class="message mt-5 p-3" *ngIf="isSaved">
+		<h5 class="text-center">Votre photo a été enregistrée avec succès. Voulez-vous prendre une autre photo?</h5>
+		<div class="d-flex justify-content-between">
+			<button class="btn btn-success" (click)="newPhoto()">OUI</button>
+			<button class="btn btn-danger" (click)="nonNewPhoto()">NON</button>
+		</div>
+	</div>-->
+</div>
+
+

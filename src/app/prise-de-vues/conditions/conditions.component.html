@@ -1,0 +1,40 @@
+<div style="height: 100px"></div>
+
+<div class="container col-11 bg-light p-5" style="border-radius: 15px;">
+
+    <div class="row title">
+        <h2>Conditions d'utilisation</h2>
+    </div>
+
+    <br>
+    <div *ngFor="let condition of conditions">
+        <h3>{{condition.title}}</h3>
+        <br>
+        <div *ngFor="let descr of condition.descr">
+            <p>{{descr.text}}</p>
+            <br>
+            <ul *ngIf="descr.ul">
+                <li *ngFor="let li of descr.ul">{{li.li}}</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-between">
+        <div class="col-lg-6 mt-2">
+            <div class="row justify-content-around">
+                <button type="button" class="btn btn-lg btn-success mr-2 accept" routerLink="/instructions">J' ACCEPTE</button>
+                <button type="button" class="btn btn-lg btn-danger refuse" routerLink="/">JE REFUSE</button>
+            </div>
+            <div class="row mt-5">
+                <p class="termes">En cliquant " J' ACCEPTE ", je reconnais avoir pris connaissance des Conditions Générales d'Utilisation de l'application ainsi que sa Politique de Confidentialité et je les accepte. </p>
+            </div>
+        </div>
+        <div class="col-6 mr-auto">
+            <img class="img-responsive img-2" src="../../assets/images/more.svg" alt="">
+        </div>
+
+
+    </div>
+
+
+</div>

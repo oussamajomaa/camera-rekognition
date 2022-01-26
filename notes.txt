@@ -1,0 +1,3 @@
+compte-rendu meet Adrien 5/8/2021
+- Solution SSO pour se connecter entre les deux applications
+- python urlLib library

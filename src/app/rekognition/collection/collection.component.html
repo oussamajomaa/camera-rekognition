@@ -1,0 +1,37 @@
+<div style="height: 100px"></div>
+<div class="container col-11 bg-light p-5" style="border-radius: 15px">
+    <h4>Liste d'images</h4>
+    <br>
+    <label for="id" class="mx-1">Saisir un ID:</label>
+    <input type="text" id="id" [(ngModel)]="id" (change)="searchID()" class="px-1 mx-2">
+    <button class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
+    <hr>
+    <div class="row">
+        <div class="col-5">User ID</div>
+        <div class="col-5">FaceId</div>
+        <div class="col-2 text-center">Select</div>
+    </div>
+    <hr>
+    <div *ngIf="isDelete" class="alert-danger text-dark p-2 row justify-content-around align-items-center rounded" style="width:80%;position: absolute;left:10%; top:auto;z-index:100">
+        <div class="col-9">
+            <h6>Vous êtes sûrs de vouloir supprimer ces images ?</h6>
+        </div>
+        <div class="col-3">
+            <button (click)="validDelete()" class="btn btn-danger btn-sm m-1" style="width: 40px;">Oui</button>
+            <button (click)="cancelDelete()" class="btn btn-primary btn-sm m-1" style="width: 40px;">Non</button>
+        </div>
+    </div>
+    <div id="faces">
+        <div class="row justify-content-between py-2 faces" *ngFor="let face of faces">
+            <div class="col-5">{{face.ExternalImageId}}</div>
+            <div class="col-5">{{face.FaceId}}</div>
+            <div class="col-2 text-center">
+                <input type="checkbox" (click)="upateFaceIds($event,face.FaceId)" [disabled]="isDelete" class="checkbox">
+            </div>
+        </div>
+    </div>
+    <div class="text-right mt-2">
+        <button [disabled]="isDelete || faceIds.length===0" (click)="deleteFace()" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer les photos</button>
+    </div>
+
+</div>
